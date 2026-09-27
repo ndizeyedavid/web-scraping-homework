@@ -1,0 +1,24 @@
+{
+  "name": "web-scraping-homework",
+  "version": "1.0.0",
+  "description": "In this repo i will be using playwright to scrap my canvas LMS dashboard specifically on my `Frontend Web Dev` course for all assignments detailing their titles, due date, descriptions and status.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ndizeyedavid/web-scraping-homework.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ndizeyedavid/web-scraping-homework/issues"
+  },
+  "homepage": "https://github.com/ndizeyedavid/web-scraping-homework#readme",
+  "dependencies": {
+    "playwright": "^1.63.0"
+  }
+}
