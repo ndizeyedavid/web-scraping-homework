@@ -78,12 +78,15 @@ async function ALUCanvasScrape() {
 
       const score = await row.locator(".score-display").innerText();
 
+      const detailsLink = await row.locator(".ig-title").getAttribute("href");
+
       scrapedAssignments.push({
         title: title.trim(),
         category: assignmentCategory,
         dueDate: dueDate.trim().replace(/\n/g, " "),
         status: status.trim(),
         score: score.trim(),
+        details: detailsLink || "-",
       });
     } catch (error) {
       console.log("Error: A row failed to be parsed", error?.message);
