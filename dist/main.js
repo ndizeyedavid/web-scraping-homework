@@ -75,4 +75,40 @@ $(function () {
   }).fail(function (error) {
     console.error("Failed to load the scrapped assignments. ERROR", error);
   });
+
+  $(".search").on("keyup", function () {
+    let searchValue = $(this).val().toLowerCase();
+
+    $(".assignments-list .assignment-wrapper").filter(function () {
+      var cardText = $(this).find(".single-assignment").text().toLowerCase();
+
+      $(this).toggle(cardText.indexOf(searchValue) > -1);
+    });
+
+    let visibleCount = $(
+      ".assignments-list .assignment-wrapper:visible",
+    ).length;
+
+    $("#searchResults").show();
+    $("#searchResults .keyword").text(searchValue);
+    $("#searchResults .results").text(visibleCount);
+
+    if (visibleCount === 0) {
+      $("#noResults").show();
+    } else {
+      $("#noResults").hide();
+    }
+  });
+
+  $(".search").on("blur", function () {
+    $("#searchResults").hide();
+  });
 });
+
+// function searchAssignment() {
+//   let searchValue = $(".search").val();
+
+//   $(".assignments-list .single-assignment").filter(function(){
+//     let textMatch = $(this).children(".titles h3").text()
+//   })
+// }

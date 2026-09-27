@@ -109,6 +109,20 @@ main {
   justify-content: center;
 }
 
+#noResults {
+  display: none;
+  text-align: center;
+  padding: 20px;
+  /* color: rgb(102, 102, 102); */
+}
+#searchResults {
+  display: none;
+  padding: 20px 0;
+}
+#searchResults .keyword,
+#searchResults .results {
+  font-weight: 700;
+}
 .single-assignment {
   position: relative;
   width: 380px;
