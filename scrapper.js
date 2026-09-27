@@ -1,7 +1,30 @@
 const { chromium } = require("playwright");
+const fs = require("fs");
 
 const CANVAS_URL = "https://alueducation.instructure.com/courses";
 
+function determineCategory(assignmentTitle) {
+  const assignmentRegex = {
+    intranet: /intranet/,
+    quiz: /quiz/,
+    resources: /(Read|Forum|Resources)/,
+    attendance: /Attendance/,
+    other: /(.*)/,
+  };
+
+  switch (true) {
+    case assignmentRegex.intranet.test(assignmentTitle):
+      return "Intranet Assignment";
+    case assignmentRegex.quiz.test(assignmentTitle):
+      return "Quiz";
+    case assignmentRegex.resources.test(assignmentTitle):
+      return "Resources";
+    case assignmentRegex.attendance.test(assignmentTitle):
+      return "Attendance";
+    default:
+      return "Regular Assignment";
+  }
+}
 async function ALUCanvasScrape() {
   const browser = await chromium.launch({ headless: false });
   const page = await browser.newPage();
@@ -33,32 +56,56 @@ async function ALUCanvasScrape() {
     `Detected ${assignmentRows.length} item(s). Extracting DOM elements now...`,
   );
 
+  await page.waitForTimeout(2000);
+
   for (const row of assignmentRows) {
     try {
       const title = await row.locator(".ig-title").innerText();
+
+      const assignmentCategory = determineCategory(title);
+
       const dueDateElement = row.locator(".assignment-date-due");
       const dueDate =
         (await dueDateElement.count()) > 0
           ? await dueDateElement.innerText()
-          : "No due date Present";
-      const statusElement = row.locator(".submission-status-container");
+          : "Undated";
+
+      const statusElement = row.locator(".default-dates");
       const status =
         (await statusElement.count()) > 0
           ? await statusElement.innerText()
-          : "Not Submitted / Available";
+          : "-";
+
+      const score = await row.locator(".score-display").innerText();
+
       scrapedAssignments.push({
         title: title.trim(),
-        dueDatee: dueDate.trim(),
+        category: assignmentCategory,
+        dueDate: dueDate.trim().replace(/\n/g, " "),
         status: status.trim(),
+        score: score.trim(),
       });
     } catch (error) {
       console.log("Error: A row failed to be parsed", error?.message);
       continue;
     }
-
-    console.log("\nScrapping complete. Here are the results:");
-    console.table(scrapedAssignments);
   }
+
+  console.log("\nScrapping complete. Here are the results:");
+  console.table(scrapedAssignments);
+
+  const jsonFileName = "canvas_assignments.json";
+  const screenshotFileName = "canvas_assignments.png";
+
+  const jsonString = JSON.stringify(scrapedAssignments, null, 2);
+  fs.writeFileSync(jsonFileName, jsonString);
+  console.log(`\nScrapped Assignment JSON file saved as: ./${jsonFileName}`);
+
+  await page.screenshot({ path: screenshotFileName });
+  console.log(`\nScreenshot saved as: ./${screenshotFileName}`);
+
+  await page.waitForTimeout(3000);
+  await browser.close();
 }
 
 ALUCanvasScrape();
