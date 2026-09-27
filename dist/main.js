@@ -22,13 +22,20 @@ const assignmentDesign = {
 };
 
 $(function () {
-  let selectedCategory = "all";
+  var selectedCategory = "all";
 
   $(".category-list button").on("click", function () {
     $(".category-list button").removeClass("active");
     $(this).addClass("active");
-    selectedCategory = this.innerText;
-    // $(this).css("background-color", assignmentDesign[selectedCategory].color);
+    selectedCategory = this.innerText.toLowerCase();
+    if (selectedCategory == "all") {
+      $(".assignments-list .assignment-wrapper").show();
+    } else {
+      $(".assignments-list .assignment-wrapper").filter(function () {
+        var cardText = $(this).find(".single-assignment").text().toLowerCase();
+        $(this).toggle(cardText.indexOf(selectedCategory) > -1);
+      });
+    }
   });
 
   const cardTemplate = $(".assignment-wrapper").first().clone();

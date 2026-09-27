@@ -31,6 +31,22 @@ main {
   height: 45px;
   border-radius: 50%;
   object-fit: cover;
+  transition: 0.4s;
+}
+.top-header img:hover {
+  animation: rotate 0.8s linear infinite;
+}
+.top-header img:active {
+  scale: 1.2;
+}
+
+@keyframes rotate {
+  0% {
+    rotate: 0deg;
+  }
+  100% {
+    rotate: 360deg;
+  }
 }
 
 .title {
