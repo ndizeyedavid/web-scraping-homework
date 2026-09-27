@@ -87,10 +87,82 @@ async function ALUCanvasScrape() {
         status: status.trim(),
         score: score.trim(),
         details: detailsLink || "-",
+        description: "",
       });
     } catch (error) {
       console.log("Error: A row failed to be parsed", error?.message);
       continue;
+    }
+  }
+
+  console.log(
+    `\nFirst pass done. Now visiting ${scrapedAssignments.length} assignment(s) to extract descriptions...`,
+  );
+
+  for (let i = 0; i < scrapedAssignments.length; i++) {
+    const assignment = scrapedAssignments[i];
+    if (!assignment.details || assignment.details === "-") {
+      assignment.description = "No details link available";
+      continue;
+    }
+
+    try {
+      console.log(
+        `  [${i + 1}/${scrapedAssignments.length}] Fetching: ${assignment.title}`,
+      );
+
+      await page.goto(assignment.details, { waitUntil: "domcontentloaded" });
+      await page.waitForTimeout(1500);
+
+      const paragraphs = await page.evaluate(() => {
+        const selectors = [
+          ".description",
+          "#assignment_show .user_content",
+          ".show-content",
+          "[data-testid='assignment-description']",
+          ".content",
+          "#content",
+        ];
+
+        let container = null;
+        for (const selector of selectors) {
+          const element = document.querySelector(selector);
+          if (
+            element &&
+            element.innerText &&
+            element.innerText.trim().length > 50
+          ) {
+            container = element;
+            break;
+          }
+        }
+
+        if (!container) {
+          const allP = Array.from(document.querySelectorAll("p"));
+          return allP
+            .map((p) => p.innerText.trim())
+            .filter((t) => t.length > 30)
+            .slice(0, 3)
+            .join("\n\n");
+        }
+
+        const pEls = container.querySelectorAll("p, li");
+        const texts = Array.from(pEls)
+          .map((el) => el.innerText.trim())
+          .filter((t) => t.length > 20);
+
+        return texts.slice(0, 3).join("\n\n");
+      });
+
+      assignment.description =
+        paragraphs && paragraphs.trim().length > 0
+          ? paragraphs.trim()
+          : "No description content found on the page.";
+    } catch (err) {
+      console.log(
+        `    ! Skipped description for "${assignment.title}": ${err?.message}`,
+      );
+      assignment.description = "Failed to load description";
     }
   }
 
