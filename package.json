@@ -4,7 +4,7 @@
   "description": "In this repo i will be using playwright to scrap my canvas LMS dashboard specifically on my `Frontend Web Dev` course for all assignments detailing their titles, due date, descriptions and status.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "scrape": "node scrapper.js"
   },
   "repository": {
     "type": "git",
