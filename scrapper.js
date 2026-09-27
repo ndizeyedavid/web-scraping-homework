@@ -14,7 +14,7 @@ function determineCategory(assignmentTitle) {
 
   switch (true) {
     case assignmentRegex.intranet.test(assignmentTitle):
-      return "Intranet Assignment";
+      return "Intranet";
     case assignmentRegex.quiz.test(assignmentTitle):
       return "Quiz";
     case assignmentRegex.resources.test(assignmentTitle):
@@ -22,7 +22,7 @@ function determineCategory(assignmentTitle) {
     case assignmentRegex.attendance.test(assignmentTitle):
       return "Attendance";
     default:
-      return "Regular Assignment";
+      return "Regular";
   }
 }
 async function ALUCanvasScrape() {
