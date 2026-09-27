@@ -4,7 +4,8 @@
     "category": "Resources",
     "dueDate": "Undated",
     "status": "-",
-    "score": "-/0 pts"
+    "score": "-/0 pts",
+    "details": "https://www.youtube.com/watch?v=YUJI09Fkb_Q&list=RDGMEMR48zJN_YMORCOLhrAwXwKwVM6Iev97KR2KU&index=2"
   },
   {
     "title": "Roll Call Attendance",
@@ -29,7 +30,7 @@
   },
   {
     "title": "Quiz One - Test your HTML/CSS/JS Prowess",
-    "category": "Regular Assignment",
+    "category": "Quiz",
     "dueDate": "Undated",
     "status": "-",
     "score": "0/0 pts"
@@ -85,77 +86,77 @@
   },
   {
     "title": "CSS, advanced (Front-End Web Development) [synced from intranet]",
-    "category": "Intranet Assignment",
+    "category": "Intranet",
     "dueDate": "Undated",
     "status": "-",
     "score": "100/100 pts"
   },
   {
     "title": "CSS, basic (Front-End Web Development) [synced from intranet]",
-    "category": "Intranet Assignment",
+    "category": "Intranet",
     "dueDate": "Undated",
     "status": "-",
     "score": "100/100 pts"
   },
   {
     "title": "HTML, advanced (Front-End Web Development) [synced from intranet]",
-    "category": "Intranet Assignment",
+    "category": "Intranet",
     "dueDate": "Undated",
     "status": "-",
     "score": "100/100 pts"
   },
   {
     "title": "HTML, basic (Front-End Web Development) [synced from intranet]",
-    "category": "Intranet Assignment",
+    "category": "Intranet",
     "dueDate": "Undated",
     "status": "-",
     "score": "100/100 pts"
   },
   {
     "title": "JavaScript - Objects, Scopes and Closures (Front-End Web Development) [synced from intranet]",
-    "category": "Intranet Assignment",
+    "category": "Intranet",
     "dueDate": "Undated",
     "status": "-",
     "score": "-/100 pts"
   },
   {
     "title": "JavaScript - Warm up (Front-End Web Development) [synced from intranet]",
-    "category": "Intranet Assignment",
+    "category": "Intranet",
     "dueDate": "Undated",
     "status": "-",
     "score": "-/100 pts"
   },
   {
     "title": "JavaScript - Web jQuery (Front-End Web Development) [synced from intranet]",
-    "category": "Intranet Assignment",
+    "category": "Intranet",
     "dueDate": "Undated",
     "status": "-",
     "score": "-/100 pts"
   },
   {
     "title": "JavaScript - Web scraping (Front-End Web Development) [synced from intranet]",
-    "category": "Intranet Assignment",
+    "category": "Intranet",
     "dueDate": "Undated",
     "status": "-",
     "score": "-/100 pts"
   },
   {
     "title": "Regular expression (Front-End Web Development) [synced from intranet]",
-    "category": "Intranet Assignment",
+    "category": "Intranet",
     "dueDate": "Undated",
     "status": "-",
     "score": "100/100 pts"
   },
   {
     "title": "Responsive design (Front-End Web Development) [synced from intranet]",
-    "category": "Intranet Assignment",
+    "category": "Intranet",
     "dueDate": "Undated",
     "status": "-",
     "score": "-/100 pts"
   },
   {
     "title": "Regex Onboarding Hackathon",
-    "category": "Regular Assignment",
+    "category": "Regular",
     "dueDate": "Due  Sep 12 at 12:59am Sep 12 at 12:59am",
     "status": "Closed",
     "score": "-/25 pts"

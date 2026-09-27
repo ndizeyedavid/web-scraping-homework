@@ -65,7 +65,7 @@ main {
   transform: scale(0.9);
 }
 
-.category-list button::before {
+.category-list button:not(:last-child)::before {
   content: "";
   position: absolute;
   top: 13.5px;
@@ -113,7 +113,7 @@ main {
   position: relative;
   width: 380px;
   /* height: 232px; */
-  background-color: #5424fd;
+  background-color: #5324fd;
   color: white;
   display: flex;
   flex-direction: column;
@@ -143,6 +143,12 @@ main {
   color: white;
   cursor: pointer;
   transition: 0.3s;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  text-decoration: none;
 }
 .assignment-wrapper .learn-more:hover {
   background: rgba(43, 43, 43, 1);
@@ -220,6 +226,10 @@ main {
   font-size: 12px;
   font-weight: 400;
   line-height: 16.8px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }
 
 .card-footer {

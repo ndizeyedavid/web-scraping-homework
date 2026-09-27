@@ -6,7 +6,7 @@ const CANVAS_URL = "https://alueducation.instructure.com/courses";
 function determineCategory(assignmentTitle) {
   const assignmentRegex = {
     intranet: /intranet/,
-    quiz: /quiz/,
+    quiz: /(Quiz|quiz)/,
     resources: /(Read|Forum|Resources)/,
     attendance: /Attendance/,
     other: /(.*)/,
@@ -74,7 +74,7 @@ async function ALUCanvasScrape() {
       const status =
         (await statusElement.count()) > 0
           ? await statusElement.innerText()
-          : "-";
+          : "No Status";
 
       const score = await row.locator(".score-display").innerText();
 
