@@ -23,6 +23,42 @@ async function ALUCanvasScrape() {
     .first()
     .click();
   await page.getByRole("link", { name: "Assignments" }).click();
+
+  await page.waitForSelector(".assignment-list");
+
+  const assignmentRows = await page.locator(".assignment-list .ig-row").all();
+  const scrapedAssignments = [];
+
+  console.log(
+    `Detected ${assignmentRows.length} item(s). Extracting DOM elements now...`,
+  );
+
+  for (const row of assignmentRows) {
+    try {
+      const title = await row.locator(".ig-title").innerText();
+      const dueDateElement = row.locator(".assignment-date-due");
+      const dueDate =
+        (await dueDateElement.count()) > 0
+          ? await dueDateElement.innerText()
+          : "No due date Present";
+      const statusElement = row.locator(".submission-status-container");
+      const status =
+        (await statusElement.count()) > 0
+          ? await statusElement.innerText()
+          : "Not Submitted / Available";
+      scrapedAssignments.push({
+        title: title.trim(),
+        dueDatee: dueDate.trim(),
+        status: status.trim(),
+      });
+    } catch (error) {
+      console.log("Error: A row failed to be parsed", error?.message);
+      continue;
+    }
+
+    console.log("\nScrapping complete. Here are the results:");
+    console.table(scrapedAssignments);
+  }
 }
 
 ALUCanvasScrape();
