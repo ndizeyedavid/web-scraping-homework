@@ -61,11 +61,8 @@ $(function () {
 
       $newCard.find(".learn-more").attr("href", assignment.details);
 
-      $newCard
-        .find(".description")
-        .text(
-          "cost dollar paper mill health twice result interior leave plan planned hit lion college sang rather center mean oldest event beneath corn ten substancelorem",
-        );
+      $newCard.find(".description").text(assignment.description);
+      $newCard.find(".description").attr("title", assignment.description);
 
       let $pillList = $newCard.find(".pill-list");
       $pillList.empty();

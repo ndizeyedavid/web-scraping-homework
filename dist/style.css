@@ -149,7 +149,7 @@ main {
   flex-direction: column;
   gap: 20px;
   border-radius: 16px;
-  /* overflow: hidden; */
+  overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.8);
   clip-path: path(
     "M252.134 0H22.9847C15.3464 0 0.0697979 4.5217 0.0697979 22.6085V202.511C-0.657659 212.34 3.99807 232 28.4406 232H355.796C364.526 231.345 381.985 226.228 381.985 210.5V99C381.985 82 378.561 61.5 351.5 61.5H323.5C316 61.5 304.394 61.5 292.5 56.5C287.044 54.2064 274 45.5 275.5 20C276.147 9 266.5 0 252.134 0Z"
@@ -260,6 +260,7 @@ main {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   overflow: hidden;
+  height: 36px;
 }
 
 .card-footer {
@@ -279,4 +280,13 @@ main {
 .card-footer .marks {
   font-size: 18px;
   font-weight: 700;
+}
+
+footer {
+  border-top: 3px dashed rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  margin-top: 20px;
 }
