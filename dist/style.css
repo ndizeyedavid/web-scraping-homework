@@ -12,7 +12,9 @@ body {
   background-color: rgba(0, 0, 0, 0.01);
   height: 100%;
 }
-
+main {
+  padding: 10px 54px;
+}
 .top-header {
   display: flex;
   justify-content: space-between;
@@ -28,6 +30,7 @@ body {
   width: 45px;
   height: 45px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .title {
@@ -41,6 +44,7 @@ body {
   width: 100%;
   overflow-x: auto;
   gap: 10px;
+  margin: 16px 0;
 }
 
 .category-list button {
@@ -80,6 +84,7 @@ body {
   width: 100%;
   display: flex;
   align-items: center;
+  margin: 16px 0;
 }
 
 .search-container img {
@@ -96,6 +101,12 @@ body {
 }
 
 .assignments-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  /* display: flex; */
+  /* flex-wrap: wrap; */
+  gap: 16px;
+  justify-content: center;
 }
 
 .single-assignment {
