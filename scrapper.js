@@ -12,6 +12,17 @@ async function ALUCanvasScrape() {
   await page.goto(CANVAS_URL);
 
   console.log("\nNow on Canvas, Awaiting for you to finish signing in....");
+
+  await page.waitForURL("**/courses**", { timeout: 0 });
+
+  console.log("\nLogin was a success! We are now on your courses Page");
+  console.log("Navigating now to the FWD course...");
+
+  await page
+    .getByRole("link", { name: "Frontend Web Development" })
+    .first()
+    .click();
+  await page.getByRole("link", { name: "Assignments" }).click();
 }
 
 ALUCanvasScrape();
