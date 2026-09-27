@@ -1,0 +1,218 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: inter, sans-serif;
+  background-color: rgba(0, 0, 0, 0.01);
+  height: 100%;
+}
+
+.top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top-header h4 {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.top-header img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.category-list {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  overflow-x: auto;
+  gap: 10px;
+}
+
+.category-list button {
+  position: relative;
+  padding: 10px 16px;
+  border-radius: 24px;
+  background-color: #d5d5d5;
+  border: none;
+  font-size: 12px;
+  font-weight: 600;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.category-list button:hover {
+  transform: translate(5px);
+}
+.category-list button:active {
+  transform: scale(0.9);
+}
+
+.category-list button::before {
+  content: "";
+  position: absolute;
+  top: 13.5px;
+  right: -35px;
+  width: 40px;
+  height: 8px;
+  background-color: inherit;
+}
+.category-list button.active {
+  background-color: #5424fd;
+  color: white;
+}
+
+.search-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.search-container img {
+  position: absolute;
+  left: 6px;
+}
+
+.search-container input {
+  width: 100%;
+  padding: 12px 36px;
+  border-radius: 8px;
+  border: 1px solid rgba(43, 43, 43, 0.2);
+  outline-color: #5424fd;
+}
+
+.assignments-list {
+}
+
+.single-assignment {
+  position: relative;
+  width: 380px;
+  /* height: 232px; */
+  background-color: #5424fd;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  clip-path: path(
+    "M252.134 0H22.9847C15.3464 0 0.0697979 4.5217 0.0697979 22.6085V202.511C-0.657659 212.34 3.99807 232 28.4406 232H355.796C364.526 231.345 381.985 226.228 381.985 210.5V99C381.985 82 378.561 61.5 351.5 61.5H323.5C316 61.5 304.394 61.5 292.5 56.5C287.044 54.2064 274 45.5 275.5 20C276.147 9 266.5 0 252.134 0Z"
+  );
+  /* box-shadow: 0 8px 50px rgba(0, 0, 0, 0.08); */
+}
+.assignment-wrapper {
+  position: relative;
+  width: fit-content;
+}
+.assignment-wrapper .learn-more {
+  position: absolute;
+  right: 0;
+  top: 5px;
+
+  width: 97px;
+  height: 49px;
+  border-radius: 25px;
+  border: 1px solid #4e4e4e;
+  background: rgba(43, 43, 43, 0.8);
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.assignment-wrapper .learn-more:hover {
+  background: rgba(43, 43, 43, 1);
+}
+.assignment-wrapper .learn-more:active {
+  transform: translateX(5px);
+}
+.single-assignment .card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 10px;
+  padding-top: 16px;
+}
+
+.single-assignment .card-header img {
+  background-color: #1f1f1f;
+  width: 45px;
+  height: 45px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+.single-assignment .card-header .titles > * + * {
+  margin-top: 3px;
+}
+
+.card-header .titles h3 {
+  font-size: 18px;
+  font-weight: 600;
+}
+.card-header .titles p {
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 10px;
+}
+
+.card-body .pill-list {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pill-list .pill {
+  font-size: 10px;
+  font-weight: 300;
+  padding: 4px 8px;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.card-body .description {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16.8px;
+}
+
+.card-footer {
+  background-color: white;
+  color: #1f1f1f;
+  padding: 16px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.card-footer span {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.card-footer .marks {
+  font-size: 18px;
+  font-weight: 700;
+}
